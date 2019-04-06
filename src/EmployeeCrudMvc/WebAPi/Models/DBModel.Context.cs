@@ -13,10 +13,10 @@ namespace WebAPi.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DBModel : DbContext
+    public partial class MyDB : DbContext
     {
-        public DBModel()
-            : base("name=DBModel")
+        public MyDB()
+            : base("name=MyDB")
         {
         }
     
@@ -25,6 +25,6 @@ namespace WebAPi.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<employee> employees { get; set; }
+        public virtual DbSet<employee_tbl> employee_tbl { get; set; }
     }
 }

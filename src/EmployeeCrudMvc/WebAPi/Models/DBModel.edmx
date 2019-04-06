@@ -5,46 +5,46 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="employee_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="employee">
+        <EntityType Name="employee_tbl">
           <Key>
             <PropertyRef Name="EmployeeId" />
           </Key>
-          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" />
           <Property Name="Position" Type="varchar" MaxLength="50" />
           <Property Name="Age" Type="int" />
-          <Property Name="Salary" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Salary" Type="int" />
         </EntityType>
         <EntityContainer Name="employee_dbModelStoreContainer">
-          <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee_tbl" EntityType="Self.employee_tbl" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="employee_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="employee">
+        <EntityType Name="employee_tbl">
           <Key>
             <PropertyRef Name="EmployeeId" />
           </Key>
-          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Age" Type="Int32" />
-          <Property Name="Salary" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Salary" Type="Int32" />
         </EntityType>
-        <EntityContainer Name="DBModel" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="employees" EntityType="Self.employee" />
+        <EntityContainer Name="MyDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="employee_tbl" EntityType="Self.employee_tbl" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="employee_dbModelStoreContainer" CdmEntityContainer="DBModel">
-          <EntitySetMapping Name="employees">
-            <EntityTypeMapping TypeName="employee_dbModel.employee">
-              <MappingFragment StoreEntitySet="employee">
+        <EntityContainerMapping StorageEntityContainer="employee_dbModelStoreContainer" CdmEntityContainer="MyDB">
+          <EntitySetMapping Name="employee_tbl">
+            <EntityTypeMapping TypeName="employee_dbModel.employee_tbl">
+              <MappingFragment StoreEntitySet="employee_tbl">
                 <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Position" ColumnName="Position" />
